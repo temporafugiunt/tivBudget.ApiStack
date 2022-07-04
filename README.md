@@ -3,13 +3,13 @@ Repository that contains the Budget and Accounts APIs for the trackItsValue.com 
 
 Technologies currently used are:
 
-* .NET Core 2.1
+* .NET Core 3.1
 
 ## Installing Required Tools
 | Tool                               | URL                                              |
 | ---------------------------------- | ------------------------------------------------ |
 | Git for Windows                    | https://git-scm.com/download/win                 |
-| Install Latest .NET Core 2.2 SDK   | https://www.microsoft.com/net/download/windows   |
+| Install Latest .NET Core 3.1 SDK   | https://www.microsoft.com/net/download/windows   |
 | Install Latest LTS Version of Node | https://nodejs.org/en/                           |
 
 

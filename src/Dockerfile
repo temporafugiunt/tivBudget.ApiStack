@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2-sdk AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /app
 
 ARG BUILD_VERSION
@@ -34,7 +34,7 @@ ENV BUILD_VERSION=${BUILD_VERSION}
 
 RUN dotnet publish tivBudget.Api.sln  -c Release -o /app/tiv-api-budget-pub
 
-FROM microsoft/dotnet:2.2-aspnetcore-runtime
+FROM mcr.microsoft.com/dotnet/aspnet
 WORKDIR /app
 COPY --from=build /app/tiv-api-budget-pub ./
 ENTRYPOINT ["dotnet", "tivBudget.Api.dll"]
