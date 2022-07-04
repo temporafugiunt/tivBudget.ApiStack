@@ -2,7 +2,7 @@
 
 import com.freebyTech.BuildInfo
 
-String versionPrefix = '2.1'
+String versionPrefix = '2.3'
 String repository = 'trackitsvalue'    
 String imageName = 'tiv-api-budget'
 String dockerBuildArguments = ''
