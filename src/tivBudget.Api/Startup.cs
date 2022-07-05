@@ -103,8 +103,8 @@ namespace tivBudget.Api
           });
       });
 
-      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-        .AddJsonOptions(options =>
+      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+        .AddNewtonsoftJson(options =>
         {
           // Stop parent child reference issues with entities.
           options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
