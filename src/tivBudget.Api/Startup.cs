@@ -205,9 +205,14 @@ namespace tivBudget.Api
       });
       // }
 
-
+      app.UseRouting();
       app.UseCors(MyAllowSpecificOrigins);
       app.UseAuthentication();
+
+      
+      app.UseEndpoints(endpoints => {
+        endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+      });
     }
   }
 }
