@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using freebyTech.Common.ExtensionMethods;
 using freebyTech.Common.Web.ExtensionMethods;
 using freebyTech.Common.Web.Logging.LoggerTypes;
-using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -133,7 +133,7 @@ namespace tivBudget.Api
       // {
       services.AddSwaggerGen(c =>
        {
-         c.SwaggerDoc(ApiVersion, new Info { Title = ApplicationInfo.Name, Version = ApplicationInfo.Version.ToString() });
+         c.SwaggerDoc(ApiVersion, new OpenApiInfo { Title = ApplicationInfo.Name, Version = ApplicationInfo.Version.ToString() });
          c.IncludeXmlComments(Path.Combine(Program.ExecutionEnvironment.ServiceRootPath, $"{ApplicationInfo.Name}.xml"));
        });
       // }
@@ -208,8 +208,6 @@ namespace tivBudget.Api
 
       app.UseCors(MyAllowSpecificOrigins);
       app.UseAuthentication();
-
-      app.UseMvc();
     }
   }
 }
