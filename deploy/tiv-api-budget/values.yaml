@@ -98,7 +98,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8080
-  internalPort: 8080
+  internalPort: 80
 
 ingress:
   enabled: false
