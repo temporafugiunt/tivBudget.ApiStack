@@ -38,7 +38,7 @@ namespace tivBudget.Api
       Log.Logger = new LoggerConfiguration()
           .ReadFrom.Configuration(Configuration)
           .Enrich.FromLogContext()
-          .WriteTo.Console() // outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Literate)
+          .WriteTo.Console(outputTemplate: "[{Timestamp:MM-dd HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}  {Properties:j}", theme: AnsiConsoleTheme.Literate)
           .WriteTo.ApplicationInsightsWithStandardLoggersForTraceTelemetry(Configuration["ApplicationInsights.InstrumentationKey"])
           .CreateLogger();
 
