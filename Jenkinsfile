@@ -15,12 +15,12 @@ node
   if('main'.equalsIgnoreCase(env.BRANCH_NAME)) 
   {
     env.NAMESPACE = 'production'
-    deploy(buildInfo, repository, imageName, 'istio-system/api-trackitsvalue-production-gateway', 'api.trackitsvalue.com')
+    deploy(buildInfo, repository, imageName, './env/production.yaml')
   } 
   else if('develop'.equalsIgnoreCase(env.BRANCH_NAME)) 
   {
     env.NAMESPACE = 'beta'
-    deploy(buildInfo, repository, imageName, 'istio-system/beta-api-trackitsvalue-development-gateway', 'beta-api.trackitsvalue.com')
+    deploy(buildInfo, repository, imageName, './env/beta.yaml')
   }
 }
 

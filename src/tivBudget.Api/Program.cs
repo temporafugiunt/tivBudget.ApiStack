@@ -42,7 +42,8 @@ namespace tivBudget.Api
           .Enrich.FromLogContext()
           .Enrich.WithExceptionDetails(new DestructuringOptionsBuilder()
             .WithDefaultDestructurers())
-          .WriteTo.Console(outputTemplate: "[{Timestamp:MM-dd HH:mm:ss} {Level}] {Message:lj}{NewLine}{SourceContext}{NewLine}{Exception}", theme: AnsiConsoleTheme.Literate)
+          //.WriteTo.Console(outputTemplate: "[{Timestamp:MM-dd HH:mm:ss} {Level}] {Message:lj}{NewLine}{SourceContext}{NewLine}{Exception}", theme: AnsiConsoleTheme.Literate)
+          .WriteTo.Console(outputTemplate: "[{Timestamp:MM-dd HH:mm:ss} {Level}] {Message:lj}{NewLine}{Exception}", theme: AnsiConsoleTheme.Literate)
           //.WriteTo.ApplicationInsightsWithStandardLoggersForTraceTelemetry(Configuration["ApplicationInsights.InstrumentationKey"])
           .CreateLogger();
 
