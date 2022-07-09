@@ -81,12 +81,12 @@ namespace tivBudget.Api
         {
           foreach (var envSub in env.GetChildren())
           {
-            Log.Information($"{env.Key} - {envSub.Key}:{ envSub.Value}");
+            Log.Information($"{env.Key} - {envSub.Key}: {envSub.Value}");
           }
         }
         else
         {
-          Log.Information($"{env.Key}:{ env.Value}");
+          Log.Information($"{env.Key}: {env.Value}");
         }
       }
 
@@ -186,8 +186,6 @@ namespace tivBudget.Api
         app.UseHsts();
       }
 
-      app.UseAuthentication();
-
       app.UseStandardApiMiddleware();
 
       //app.UseHttpsRedirection();
@@ -205,12 +203,13 @@ namespace tivBudget.Api
       });
       // }
 
-      app.UseRouting();
       app.UseCors(MyAllowSpecificOrigins);
       app.UseAuthentication();
+      app.UseRouting();
+      app.UseAuthorization();
 
-      
-      app.UseEndpoints(endpoints => {
+      app.UseEndpoints(endpoints =>
+      {
         endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
       });
     }

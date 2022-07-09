@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using Serilog.Exceptions;
 using System;
 using System.IO;
 using freebyTech.Common.Interfaces;
 using freebyTech.Common.Environment;
 using freebyTech.Common.ExtensionMethods;
+using Serilog.Exceptions.Core;
 
 namespace tivBudget.Api
 {
@@ -38,8 +40,10 @@ namespace tivBudget.Api
       Log.Logger = new LoggerConfiguration()
           .ReadFrom.Configuration(Configuration)
           .Enrich.FromLogContext()
-          .WriteTo.Console(outputTemplate: "[{Timestamp:MM-dd HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}  {Properties:j}", theme: AnsiConsoleTheme.Literate)
-          .WriteTo.ApplicationInsightsWithStandardLoggersForTraceTelemetry(Configuration["ApplicationInsights.InstrumentationKey"])
+          .Enrich.WithExceptionDetails(new DestructuringOptionsBuilder()
+            .WithDefaultDestructurers())
+          .WriteTo.Console(outputTemplate: "[{Timestamp:MM-dd HH:mm:ss} {Level}] {Message:lj}{NewLine}{SourceContext}{NewLine}{Exception}", theme: AnsiConsoleTheme.Literate)
+          //.WriteTo.ApplicationInsightsWithStandardLoggersForTraceTelemetry(Configuration["ApplicationInsights.InstrumentationKey"])
           .CreateLogger();
 
       try
